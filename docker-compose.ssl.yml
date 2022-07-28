@@ -21,7 +21,7 @@ services:
     volumes:
       - ./certbot/etc:/etc/letsencrypt
       - ./certbot/var:/var/lib/letsencrypt
-      - ./www:/var/www/html
+      - ./certbot/www:/var/www/html
     command: "certonly --webroot --webroot-path=/var/www/html --email ${SSL_EMAIL} --agree-tos --no-eff-email --force-renewal -d ${SERVER_NAME} -d www.${SERVER_NAME}"
     env_file:
       - ./.env

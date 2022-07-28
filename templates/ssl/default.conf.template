@@ -5,7 +5,6 @@ server {
      server_name ${SERVER_NAME} www.${SERVER_NAME};
 
      location /.well-known/acme-challenge/ {
-             allow all;
-             root /var/www/certbot;
-     } 
+        root /var/www/certbot;
+    }
 }
