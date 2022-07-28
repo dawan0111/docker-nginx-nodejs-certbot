@@ -1,13 +1,16 @@
 FROM node:16
-USER node
+ARG USER_ID=node
 
-RUN mkdir /home/node/.npm-global
-ENV PATH=/home/node/.npm-global/bin:$PATH
-ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
+USER $USER_ID
 
-RUN npm install yarn -g
-WORKDIR /usr/src/app
-COPY --chown=node . .
+RUN mkdir /home/$USER_ID/.npm-global
+ENV PATH=/home/$USER_ID/.npm-global/bin:$PATH
+ENV NPM_CONFIG_PREFIX=/home/$USER_ID/.npm-global
+
+RUN npm install yarn --global
+RUN mkdir -p /home/$USER_ID/app
+WORKDIR /home/$USER_ID/app
+COPY --chown=$USER_ID . .
 
 RUN yarn
 EXPOSE 3000
