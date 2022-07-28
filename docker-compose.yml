@@ -1,0 +1,22 @@
+version: "2"
+services:
+  nginx:
+    container_name: "nginx"
+    build:
+      context: "./"
+      dockerfile: "./docker/nginx/Dockerfile"
+    volumes:
+      - ./templates:/etc/nginx/templates
+      - ./certbot/etc:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    ports:
+      - "80:80"
+    env_file:
+      - ./.env
+  nodejs:
+    container_name: "nextjs"
+    build:
+      context: "./"
+      dockerfile: "./docker/nodejs/Dockerfile"
+    ports:
+      - "8080:3000"
