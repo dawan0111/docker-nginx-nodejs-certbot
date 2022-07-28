@@ -1,3 +1,7 @@
 # Docker Nginx + Nodejs + Certbot
 
-test
+# ssl install (first time)
+
+```bash
+$ python3 ssl_install.py
+```

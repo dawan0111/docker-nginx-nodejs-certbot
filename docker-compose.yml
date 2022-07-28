@@ -6,7 +6,7 @@ services:
       context: "./"
       dockerfile: "./docker/nginx/Dockerfile"
     volumes:
-      - ./templates:/etc/nginx/templates
+      - ./templates/production:/etc/nginx/templates
       - ./certbot/etc:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
     ports:
